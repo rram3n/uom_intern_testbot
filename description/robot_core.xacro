@@ -53,6 +53,10 @@
 
     </link>
 
+    <gazebo reference = "chassis">
+        <material>Gazebo/White</material>
+    </gazebo>
+
     <!-- Left Wheel Link -->
     <link name = "left_wheel">
         <visual>
@@ -71,6 +75,10 @@
         </xacro:inertial_cylinder>
 
     </link>
+
+    <gazebo reference = "left_wheel">
+        <material>Gazebo/Blue</material>
+    </gazebo>
 
     <!-- Right Wheel Link -->
     <link name = "right_wheel">
@@ -92,6 +100,10 @@
 
     </link>
 
+    <gazebo reference = "right_wheel">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
    <!-- Caster Wheel Link -->
     <link name = "caster_wheel">
         <visual>
@@ -109,8 +121,13 @@
             <origin xyz = "0 0 0" rpy = "0 0 0"/>
         </xacro:inertial_sphere>
 
-
     </link>
+
+    <gazebo reference = "caster_wheel">
+        <material>Gazebo/Black</material>
+        <mu1 value = "0.001" />
+        <mu2 value = "0.001" />
+    </gazebo>
 
 <!-- Joints -->
     <!-- Chassis Joint -->
