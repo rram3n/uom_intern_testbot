@@ -32,6 +32,12 @@
 
     </link>
 
+    <!-- Base Footprint Link -->
+    <link name = "base_footprint">
+
+    </link>
+
+
     <!-- Chassis Link -->
     <link name = "chassis">
         <visual>
@@ -130,6 +136,15 @@
     </gazebo>
 
 <!-- Joints -->
+
+    <!-- Base Footprint Joint -->
+    <joint name = "base_footprint_joint" type = "fixed">
+        <parent link = "base_link"/>
+        <child link = "base_footprint"/>
+        <origin xyz = "0 0 0" rpy = "0 0 0"/>
+        
+    </joint>
+
     <!-- Chassis Joint -->
     <joint name = "chassis_joint" type = "fixed">
         <parent link = "base_link" />
