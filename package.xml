@@ -7,8 +7,19 @@
   <maintainer email="my_email@email.com">MY NAME</maintainer>
   <license>TODO: License declaration</license>
 
+  <!-- Build tool dependencies -->
   <buildtool_depend>ament_cmake</buildtool_depend>
 
+  <!-- Dependencies for Python nodes -->
+  <exec_depend>rclpy</exec_depend>
+
+  <!-- Additional dependencies -->
+  <exec_depend>launch</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+
+  <!-- Testing dependencies -->
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
 

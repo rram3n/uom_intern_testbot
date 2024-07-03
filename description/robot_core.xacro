@@ -53,7 +53,7 @@
                 <box size = "0.3 0.3 0.15"/>
             </geometry>
         </collision>
-        <xacro:inertial_box mass = "0.5" x = "0.3" y = "0.3" z = "0.15">
+        <xacro:inertial_box mass = "1.0" x = "0.3" y = "0.3" z = "0.15">
             <origin xyz = "0.15 0 0.075" rpy = "0 0 0"/>
         </xacro:inertial_box>
 
@@ -123,7 +123,7 @@
                 <sphere radius = "0.05"/>
             </geometry>
         </collision>
-        <xacro:inertial_sphere mass = "0.1" radius = "0.05">
+        <xacro:inertial_sphere mass = "0.5" radius = "0.05">
             <origin xyz = "0 0 0" rpy = "0 0 0"/>
         </xacro:inertial_sphere>
 
