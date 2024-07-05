@@ -47,6 +47,8 @@ install(
   PROGRAMS
   robot_controller/circle.py  # Ensure this file is executable
   robot_controller/obstacle_avoid.py
+  robot_controller/goal_pose.py
+  robot_controller/a_star.py
 
   DESTINATION
   lib/${PROJECT_NAME}
@@ -55,6 +57,7 @@ install(
 # Export dependencies
 ament_export_dependencies(rclpy geometry_msgs)
 ament_export_dependencies(rclpy sensor_msgs)
+ament_export_dependencies(rclpy nav_msgs)
 
 # ament package macros
 ament_package()

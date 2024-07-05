@@ -22,17 +22,22 @@ class ObstacleAvoidanceNode(Node):
         self.distance_threshold = 1.0  # meters
         self.safe_distance = 2.0  # meters
 
+        # Define the angle range to consider (in degrees)
+        self.angle_range_degrees = 90  # 45 degrees to either side
+        self.min_angle = -self.angle_range_degrees / 2
+        self.max_angle = self.angle_range_degrees / 2
+
     def scan_callback(self, msg):
-        # Process laser scan data
         ranges = msg.ranges
         min_distance = min(ranges)
 
         if min_distance < self.distance_threshold:
             self.linear_velocity = 0.0
-            self.angular_velocity = 0.8  # Turn to avoid obstacle
+            self.angular_velocity = 0.5 # Turn to avoid obstacle
         else:
-            self.linear_velocity = 0.2
-            self.angular_velocity = 0.4  # Continue circling
+            self.linear_velocity = 0.5
+            self.angular_velocity = 0.0  # Continue forward
+
 
     def timer_callback(self):
         msg = Twist()
