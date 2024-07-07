@@ -1,3 +1,3 @@
 ## Testing ROS, Gazebo, and RVIZ
 
-following the guide on : https://articulatedrobotics.xyz/tutorials/mobile-robot/project-overview
+my attempt at creating a simulation of an autonomous robot that can detect and path plan to a radiation source
