@@ -3,7 +3,7 @@
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import PoseStamped, Twist
-from nav_msgs.msg import Odometry
+from nav_msgs.msg import Odometry,OccupancyGrid
 from sensor_msgs.msg import LaserScan
 import math
 import heapq
@@ -28,10 +28,10 @@ class AStarPlanner(Node):
             10
         )
 
-        self.scan_subscription = self.create_subscription(
-            LaserScan,
-            '/scan',
-            self.scan_callback,
+        self.map_subscription = self.create_subscription(
+            OccupancyGrid,
+            '/map',
+            self.map_callback,
             10
         )
 
@@ -45,12 +45,14 @@ class AStarPlanner(Node):
         self.grid_resolution = 0.2  # Adjust as per the resolution of your grid
         self.grid_size = 100  # Adjust based on the environment size
 
+    #updates current position of robot from /odom 
     def current_pose_callback(self, msg):
         self.current_position = (
             msg.pose.pose.position.x,
             msg.pose.pose.position.y
         )
 
+    #updates goal position of robot from /goal_pose
     def goal_pose_callback(self, msg):
         self.goal_position = (
             msg.pose.position.x,
@@ -59,23 +61,14 @@ class AStarPlanner(Node):
         self.get_logger().info(f"Goal Set Pose: {self.goal_position}")
         self.plan_path()
 
-    def scan_callback(self, msg):
-        self.obstacles = self.laser_scan_to_obstacles(msg)
+    #updates map data from topic /map
+    def map_callback(self, msg):
+        self.map_data = msg.data
+        self.map_info = msg.info
 
-    def laser_scan_to_obstacles(self, scan):
-        obstacles = []
-        angle_min = scan.angle_min
-        angle_increment = scan.angle_increment
-        for i, range in enumerate(scan.ranges):
-            if range < scan.range_max:
-                angle = angle_min + i * angle_increment
-                x = range * math.cos(angle)
-                y = range * math.sin(angle)
-                obstacles.append((x, y))
-        return obstacles
-
+    #checks if current position are initialised propertly before dollowing the path
     def plan_path(self):
-        if self.current_position is None or self.goal_position is None:
+        if self.current_position is None or self.goal_position is None or self.map_data is None:
             return
 
         path = self.a_star_search(self.current_position, self.goal_position)
@@ -126,17 +119,24 @@ class AStarPlanner(Node):
         return [n for n in neighbors if self.is_walkable(n)]
 
     def is_walkable(self, position):
-        world_pos = self.world_position(position)
-        for obs in self.obstacles:
-            if self.distance(world_pos, obs) < self.grid_resolution:
-                return False
-        return True
+        index = self.grid_to_index(position)
+        if index < 0 or index >= len(self.map_data):
+            return False
+        return self.map_data[index] < 50  # Assuming 0-100 scale, where <50 is walkable
 
     def grid_position(self, world_pos):
-        return (int(world_pos[0] / self.grid_resolution), int(world_pos[1] / self.grid_resolution))
+        x = int((world_pos[0] - self.map_info.origin.position.x) / self.map_info.resolution)
+        y = int((world_pos[1] - self.map_info.origin.position.y) / self.map_info.resolution)
+        return (x, y)
 
     def world_position(self, grid_pos):
-        return (grid_pos[0] * self.grid_resolution, grid_pos[1] * self.grid_resolution)
+        x = grid_pos[0] * self.map_info.resolution + self.map_info.origin.position.x
+        y = grid_pos[1] * self.map_info.resolution + self.map_info.origin.position.y
+        return (x, y)
+
+    def grid_to_index(self, grid_pos):
+        x, y = grid_pos
+        return y * self.map_info.width + x
 
     def distance(self, pos1, pos2):
         return math.sqrt((pos1[0] - pos2[0]) ** 2 + (pos1[1] - pos2[1]) ** 2)
