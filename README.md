@@ -1,3 +1,3 @@
-## Testing ROS, Gazebo, and RVIZ
+## Radiation Source Estimation and Seeking Robot in ROS2 Humble
 
-my attempt at creating a simulation of an autonomous robot that can detect and path plan to a radiation source
+This repository contains the simulation for a differential drive robot using ROS2 Humble, designed to estimate and locate radiation sources within a simulated environment. The project leverages ROS2 functionalities to manage real-time operations and sensor integration, providing a robust framework for autonomous navigation and radiation detection.
