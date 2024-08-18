@@ -42,7 +42,7 @@ ros2 run uom_intern_testbot radiation_source.py
 The A* path planner is launched using:
 
 ```
-ros2 run uom_intern_testbot particle_filter.py
+ros2 run uom_intern_testbot a_star_particle_filter.py
 ```
 
 For the Reinforcement Learning based path planner (currently in development):
