@@ -39,7 +39,7 @@ ros2 run uom_intern_testbot radiation_source.py
 
 5. Path Planning method
 
-The A* path planner is launched using:
+The A* path planner is launched using (currently in development):
 
 ```
 ros2 run uom_intern_testbot a_star_particle_filter.py
