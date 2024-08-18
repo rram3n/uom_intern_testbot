@@ -7,9 +7,9 @@ To run this simulation, run the following files:
 1. Gazebo
 
 Gazebo is used to intialize the environment and it is launched using:
-
+'''
 ros2 launch uom_intern_testbot launch_sim.launch.py world:=./src/uom_intern_testbot/worlds/maze.world
-
+'''
 2. RVIZ
 
 RVIZ is used to visualize the robot's view of the environment and it is launched using:
