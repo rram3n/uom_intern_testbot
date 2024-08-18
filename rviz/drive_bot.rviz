@@ -54,21 +54,13 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        base_footprint:
-          Value: true
         base_link:
           Value: true
         caster_wheel:
           Value: true
         chassis:
           Value: true
-        laser_frame:
-          Value: true
         left_wheel:
-          Value: true
-        map:
-          Value: true
-        odom:
           Value: true
         right_wheel:
           Value: true
@@ -78,25 +70,19 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        map:
-          odom:
-            base_link:
-              base_footprint:
-                {}
-              chassis:
-                caster_wheel:
-                  {}
-                laser_frame:
-                  {}
-              left_wheel:
-                {}
-              right_wheel:
-                {}
+        base_link:
+          chassis:
+            caster_wheel:
+              {}
+          left_wheel:
+            {}
+          right_wheel:
+            {}
       Update Interval: 0
       Value: true
     - Alpha: 1
       Class: rviz_default_plugins/RobotModel
-      Collision Enabled: false
+      Collision Enabled: true
       Description File: ""
       Description Source: Topic
       Description Topic:
@@ -112,10 +98,6 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        base_footprint:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
         base_link:
           Alpha: 1
           Show Axes: false
@@ -126,11 +108,6 @@ Visualization Manager:
           Show Trail: false
           Value: true
         chassis:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        laser_frame:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -152,7 +129,7 @@ Visualization Manager:
       TF Prefix: ""
       Update Interval: 0
       Value: true
-      Visual Enabled: true
+      Visual Enabled: false
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -199,7 +176,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 9.075822830200195
+      Distance: 1.6422799825668335
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -214,10 +191,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.4147971570491791
+      Pitch: 0.08539789915084839
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 2.6822102069854736
+      Yaw: 0.06221657246351242
     Saved: ~
 Window Geometry:
   Displays:
@@ -235,5 +212,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1908
-  X: 2528
-  Y: -32
+  X: 2560
+  Y: 0

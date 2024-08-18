@@ -20,6 +20,10 @@ find_package(ament_cmake REQUIRED)
 find_package(rclpy REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
+find_package(visualization_msgs REQUIRED)
+find_package(gazebo_msgs REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(builtin_interfaces REQUIRED)
 
 # uncomment the following section in order to fill in
 # further dependencies manually.
@@ -45,10 +49,14 @@ install(
 # Install Python scripts from robot_controller
 install(
   PROGRAMS
-  robot_controller/circle.py  # Ensure this file is executable
+  robot_controller/circle.py
   robot_controller/obstacle_avoid.py
   robot_controller/goal_pose.py
   robot_controller/a_star.py
+  radiation/radiation_source.py
+  radiation/radiation_heatmap.py
+  radiation/radiation_detect.py
+  radiation/particle_filter.py
 
   DESTINATION
   lib/${PROJECT_NAME}
@@ -58,6 +66,7 @@ install(
 ament_export_dependencies(rclpy geometry_msgs)
 ament_export_dependencies(rclpy sensor_msgs)
 ament_export_dependencies(rclpy nav_msgs)
+ament_export_dependencies(rclpy std_msgs)
 
 # ament package macros
 ament_package()
