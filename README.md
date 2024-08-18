@@ -16,26 +16,35 @@ ros2 launch uom_intern_testbot launch_sim.launch.py world:=./src/uom_intern_test
 
 RVIZ is used to visualize the robot's view of the environment and it is launched using:
 
+```
 ros2 launch uom_intern_testbot launch_sim.launch.py world:=./src/uom_intern_testbot/worlds/maze.world
+```
 
 3. SLAM toolbox
 
 The SLAM toolbox is used to map a pre-saved map of the world in Gazebo. The custom map is launched using:
 
+```
 ros2 launch slam_toolbox online_async_launch.py slam_params_file:=./src/uom_intern_testbot/config/mapper_params_online_async.yaml use_sim_time:=true
+```
 
 4. Radiation source
 
 To initialize the radiation source, run the radiation_source.py using:
 
+```
 ros2 run uom_intern_testbot radiation_source.py
+```
 
 5. Path Planning method
 
 The A* path planner can be launched using:
 
+```
 ros2 run uom_intern_testbot particle_filter.py
+```
 
 The reinforcement learning based path planner can be launched using:
-
-work in progress...
+```
+ros2 run uom_intern_testbot work in progress...
+```
