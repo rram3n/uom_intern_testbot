@@ -53,10 +53,10 @@ install(
   robot_controller/obstacle_avoid.py
   robot_controller/goal_pose.py
   robot_controller/a_star.py
+  robot_controller/rf_particle_filter.py
   radiation/radiation_source.py
   radiation/radiation_heatmap.py
   radiation/radiation_detect.py
-  radiation/particle_filter.py
 
   DESTINATION
   lib/${PROJECT_NAME}
